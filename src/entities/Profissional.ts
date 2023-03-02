@@ -16,10 +16,7 @@ export class Profissional {
   @Column({ type: "text" })
   nome: string;
 
-  @ManyToOne(
-    () => Especialidade,
-    (especialidade) => especialidade.profissional
-  )
+  @ManyToOne(() => Especialidade, (especialidade) => especialidade.profissional)
   @JoinColumn({ name: "especialidade_id" })
   especialidade: Especialidade;
 
