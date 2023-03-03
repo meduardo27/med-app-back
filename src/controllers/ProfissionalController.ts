@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import e, { Request, Response } from "express";
 import { especialidadeRepository } from "../repositories/especialidadeRepository";
 import { profissionalRepository } from "../repositories/profissionalRepository";
 import { unidadeRepository } from "../repositories/unidadeRepository";

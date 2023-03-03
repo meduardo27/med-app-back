@@ -2,7 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Especialidade } from "./Especialidade";
@@ -23,15 +23,18 @@ export class Consulta {
   @Column({ type: "text" })
   genero: string;
 
-  @OneToOne(() => Especialidade, (especialidade) => especialidade.id)
+  @Column({ type: "text"})
+  numeroCelular: string
+
+  @ManyToOne(() => Especialidade, (especialidade) => especialidade.id)
   @JoinColumn({ name: "especialidade_id" })
   especialidade: Especialidade;
 
-  @OneToOne(() => Profissional, (profissional) => profissional.id)
+  @ManyToOne(() => Profissional, (profissional) => profissional.id)
   @JoinColumn({ name: "profissional_id" })
   profissional: Profissional;
 
-  @OneToOne(() => Unidade, (unidade) => unidade.id)
+  @ManyToOne(() => Unidade, (unidade) => unidade.id)
   @JoinColumn({ name: "unidade_id" })
   unidade: Unidade;
 

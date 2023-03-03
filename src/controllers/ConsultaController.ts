@@ -11,6 +11,7 @@ export class ConsultaController {
         relations: {
           especialidade: true,
           unidade: true,
+          profissional: true,
         },
       });
       return res.json(consultas);
@@ -21,7 +22,7 @@ export class ConsultaController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, dataNasc, genero, dataConsulta } = req.body;
+    const { nome, dataNasc, genero, dataConsulta, numeroCelular } = req.body;
     const { idEspecialidade, idUnidade, idProfissional } = req.params;
 
     if (!nome) {
@@ -42,6 +43,12 @@ export class ConsultaController {
       return res
         .status(400)
         .json({ message: "O campo data da consulta é obrigatório" });
+    }
+
+    if (!numeroCelular) {
+      return res
+        .status(400)
+        .json({ message: "O campo número celular é obrigatório" });
     }
 
     try {
@@ -73,6 +80,7 @@ export class ConsultaController {
         dataNasc,
         genero,
         dataConsulta,
+        numeroCelular,
         especialidade,
         unidade,
         profissional,
@@ -88,7 +96,7 @@ export class ConsultaController {
   }
 
   async update(req: Request, res: Response) {
-    const { nome, dataNasc, genero, dataConsulta } = req.body;
+    const { nome, dataNasc, genero, dataConsulta, numeroCelular } = req.body;
     const { idConsulta, idEspecialidade, idUnidade, idProfissional } =
       req.params;
 
@@ -110,6 +118,12 @@ export class ConsultaController {
       return res
         .status(400)
         .json({ message: "O campo data da consulta é obrigatório" });
+    }
+
+    if (!numeroCelular) {
+      return res
+        .status(400)
+        .json({ message: "O campo número celular é obrigatório" });
     }
 
     try {
@@ -149,6 +163,7 @@ export class ConsultaController {
       consulta.dataNasc = dataNasc;
       consulta.genero = genero;
       consulta.dataConsulta = dataConsulta;
+      consulta.numeroCelular = numeroCelular;
       consulta.especialidade = especialidade;
       consulta.unidade = unidade;
       consulta.profissional = profissional;
