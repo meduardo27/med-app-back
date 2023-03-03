@@ -19,7 +19,7 @@ O projeto foi criado com o objetivo de criar marcação de consulta médica.
 ```
 ## Execução do projeto
 
-> yarn - instalar as dependências 
-> yarn migration:generate - geração das migrations
-> yarn migration:run - executar as migrations
-> yarn dev - rodar a API
+* yarn - instalar as dependências 
+* yarn migration:generate - geração das migrations
+* yarn migration:run - executar as migrations
+* yarn dev - rodar a API
