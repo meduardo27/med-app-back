@@ -6,7 +6,7 @@ O projeto foi criado com o objetivo de criar marcação de consulta médica.
 
 ## Stack utilizada
 
-**Back-end:** NodeJS, Express, TypeScript, TypeORM.
+**Back-end:** NodeJS, Express, TypeScript, TypeORM, Swagger UI. 
 **Banco de dados:** SQL Server 2022
 
 
