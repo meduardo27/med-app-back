@@ -12,7 +12,7 @@ O projeto foi criado com o objetivo de criar marcação de consulta médica.
 
 ## Documentação da API
 
-#### A documentação se encontra no link abaixo:
+#### A documentação se encontra na url abaixo:
 
 ```http
   http://localhost:3000/api-docs/
