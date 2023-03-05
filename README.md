@@ -15,7 +15,7 @@ O projeto foi criado com o objetivo de criar marcação de consulta médica.
 #### A documentação se encontra no link abaixo:
 
 ```http
-  https://documenter.getpostman.com/view/21139277/2s93CUHVb5
+  http://localhost:3000/api-docs/
 ```
 ## Execução do projeto
 

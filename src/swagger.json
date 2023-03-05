@@ -1,0 +1,782 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de manipulação de dados da marcação de consulta médica",
+    "description": "Essa API tem como o objetivo a manipulação dos dados da marcação de consulta médica",
+    "termsOfService": "",
+    "contact": {
+      "email": "medu2710@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "API"
+    }
+  ],
+  "paths": {
+    "/especialidades": {
+      "get": {
+        "sumary": "Listar Especialidades",
+        "description": "Busca todas as especialidades cadastradas",
+        "tags": ["Especialidades"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Especialidades"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "sumary": "Cadastro de Especialidade",
+        "description": "Essa rota será responsável por cadastrar uma nova especialidade",
+        "tags": ["Especialidades"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Especialidades"
+              },
+              "examples": {
+                "especialidades": {
+                  "value": {
+                    "descricao": "Oftalmologista"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O campo descrição é obrigatório"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Especialidades"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/especialidades/{id}": {
+      "put": {
+        "sumary": "Alterar Especialidade",
+        "description": "Essa rota será responsável por alterar uma especialidade",
+        "tags": ["Especialidades"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da especialidade específica",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Especialidades"
+              },
+              "examples": {
+                "especialidades": {
+                  "value": {
+                    "descricao": "Clínico Geral"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O campo descrição é obrigatório"
+          },
+          "404": {
+            "description": "Registro não encontrado!"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Especialidades"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "sumary": "Deletar Especialidade",
+        "description": "Essa rota será responsável por remover uma especialidade",
+        "tags": ["Especialidades"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da especialidade específica",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "O campo descrição é obrigatório"
+          },
+          "404": {
+            "description": "Registro não encontrado!"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Especialidades"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/unidades": {
+      "get": {
+        "sumary": "Listar Unidades",
+        "description": "Busca todas as unidades cadastradas",
+        "tags": ["Unidades"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Unidades"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "sumary": "Cadastro de Unidades",
+        "description": "Essa rota será responsável por cadastrar uma nova unidade",
+        "tags": ["Unidades"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Unidades"
+              },
+              "examples": {
+                "unidades": {
+                  "value": {
+                    "descricao": "Clínica Médica Centro",
+                    "endereco": "Av. Maripá"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O campo é obrigatório"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Especialidades"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/unidades/{id}": {
+      "put": {
+        "sumary": "Alterar Unidade",
+        "description": "Essa rota será responsável por alterar uma unidade",
+        "tags": ["Unidades"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da unidade específica",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Unidades"
+              },
+              "examples": {
+                "unidades": {
+                  "value": {
+                    "descricao": "Clínica Jardim Líder",
+                    "endereco": "Av. Rio Grande do Sul"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O campo é obrigatório"
+          },
+          "404": {
+            "description": "Registro não encontrado!"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Unidades"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "sumary": "Deletar Unidade",
+        "description": "Essa rota será responsável por remover uma unidade",
+        "tags": ["Unidades"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da unidade específica",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "O campo é obrigatório"
+          },
+          "404": {
+            "description": "Registro não encontrado!"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Unidades"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/profissional": {
+      "get": {
+        "sumary": "Listar Profissionais da Saúde",
+        "description": "Busca todas os profissionais da saúde cadastradas",
+        "tags": ["Profissionais"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Profissionais"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profissional/{idEspecialidade}/{idUnidade}": {
+      "post": {
+        "sumary": "Cadastro de Profissional",
+        "description": "Essa rota será responsável por cadastrar um novo profissional da saúde",
+        "tags": ["Profissionais"],
+        "parameters": [
+          {
+            "name": "idEspecialidade",
+            "in": "path",
+            "description": "ID da especialidade específica",
+            "required": true
+          },
+          {
+            "name": "idUnidade",
+            "in": "path",
+            "description": "ID da unidade específica",
+            "required": true
+          }
+        ],
+
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Profissionais"
+              },
+              "examples": {
+                "profissional": {
+                  "value": {
+                    "nome": "Rafael Oliveira"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O campo é obrigatório"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Profissionais"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profissional/{id}/{idEspecialidade}/{idUnidade}": {
+      "put": {
+        "sumary": "Alterar Profissional",
+        "description": "Essa rota será responsável por alterar um profissional da saúde",
+        "tags": ["Profissionais"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do profissional específico",
+            "required": true
+          },
+          {
+            "name": "idEspecialidade",
+            "in": "path",
+            "description": "ID da especialidade específica",
+            "required": true
+          },
+          {
+            "name": "idUnidade",
+            "in": "path",
+            "description": "ID da unidade específica",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Profissionais"
+              },
+              "examples": {
+                "profissional": {
+                  "value": {
+                    "nome": "Tatiane Brito"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O campo é obrigatório"
+          },
+          "404": {
+            "description": "Registro não encontrado!"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Profissionais"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profissional/{id}": {
+      "delete": {
+        "sumary": "Deletar Profissional",
+        "description": "Essa rota será responsável por remover um profissional da saúde",
+        "tags": ["Profissionais"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do profissional específico",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "O campo é obrigatório"
+          },
+          "404": {
+            "description": "Registro não encontrado!"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Profissionais"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/consultas": {
+      "get": {
+        "sumary": "Listar consultas marcadas",
+        "description": "Busca todas as consultas médicas marcadas",
+        "tags": ["Consultas"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Consultas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{idEspecialidade}/{idUnidade}/{idProfissional}": {
+      "post": {
+        "sumary": "Cadastro de Consulta",
+        "description": "Essa rota será responsável por cadastrar uma nova consulta médica",
+        "tags": ["Consultas"],
+        "parameters": [
+          {
+            "name": "idEspecialidade",
+            "in": "path",
+            "description": "ID da especialidade específica",
+            "required": true
+          },
+          {
+            "name": "idUnidade",
+            "in": "path",
+            "description": "ID da unidade específica",
+            "required": true
+          },
+          {
+            "name": "idProfissional",
+            "in": "path",
+            "description": "ID do profissional específico",
+            "required": true
+          }
+        ],
+
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consultas"
+              },
+              "examples": {
+                "profissional": {
+                  "value": {
+                    "nome": "Eduardo Oliveira",
+                    "dataNasc": "1996-10-27",
+                    "genero": "Masculino",
+                    "numeroCelular": "(92) 99999-9999",
+                    "dataConsulta": "2023-04-02 11:00:00"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O campo é obrigatório"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Consultas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{id}/{idEspecialidade}/{idUnidade}/{idProfissional}": {
+      "put": {
+        "sumary": "Alterar Consulta",
+        "description": "Essa rota será responsável por alterar uma consulta médica",
+        "tags": ["Consultas"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da consulta médica específica",
+            "required": true
+          },
+          {
+            "name": "idEspecialidade",
+            "in": "path",
+            "description": "ID da especialidade específica",
+            "required": true
+          },
+          {
+            "name": "idUnidade",
+            "in": "path",
+            "description": "ID da unidade específica",
+            "required": true
+          },
+          {
+            "name": "idProfissional",
+            "in": "path",
+            "description": "ID do profissional específico",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consultas"
+              },
+              "examples": {
+                "profissional": {
+                  "value": {
+                    "nome": "Alex Silva",
+                    "dataNasc": "1980-12-12",
+                    "genero": "Masculino",
+                    "numeroCelular": "(45) 99999-9999",
+                    "dataConsulta": "2023-04-10 10:00:00"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "O campo é obrigatório"
+          },
+          "404": {
+            "description": "Registro não encontrado!"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Consultas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{id}": {
+      "delete": {
+        "sumary": "Deletar Consulta",
+        "description": "Essa rota será responsável por remover uma consulta médica",
+        "tags": ["Consultas"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da consulta médica específica",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "O campo é obrigatório"
+          },
+          "404": {
+            "description": "Registro não encontrado!"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Consultas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Especialidades": {
+        "type": "object",
+        "properties": {
+          "descricao": {
+            "type": "string"
+          }
+        }
+      },
+      "Unidades": {
+        "type": "object",
+        "properties": {
+          "descricao": {
+            "type": "string"
+          },
+          "endereco": {
+            "type": "string"
+          }
+        }
+      },
+      "Profissionais": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          }
+        }
+      },
+      "Consultas": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "dataNasc": {
+            "type": "date"
+          },
+          "genero": {
+            "type": "string"
+          },
+          "numeroCelular": {
+            "type": "string"
+          },
+          "dataConsulta": {
+            "type": "date"
+          }
+        }
+      }
+    }
+  }
+}
