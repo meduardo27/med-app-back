@@ -6,13 +6,13 @@ O projeto foi criado com o objetivo de criar marcação de consulta médica.
 
 ## Stack utilizada
 
-**Back-end:** NodeJS, Express, TypeScript, TypeORM.
+**Back-end:** NodeJS, Express, TypeScript, TypeORM, Swagger UI. 
 **Banco de dados:** SQL Server 2022
 
 
 ## Documentação da API
 
-#### A documentação se encontra no link abaixo:
+#### A documentação se encontra na url abaixo:
 
 ```http
   http://localhost:3000/api-docs/
